@@ -1,6 +1,9 @@
 import express from "express";
-import { PORT } from "./src/config/index.js";
+import { PORT } from "./src/config/server.config.js";
 import apiRouter from "./src/routes/index.js";
+import { connectToDb } from "./src/config/db.config.js";
+import {errorHandler} from "./src/utils/index.js"
+
 
 const app = express();
 
@@ -15,7 +18,10 @@ app.get("/ping", (req, res, next) => {
     message: `problem service is alive `,
   });
 });
+app.use(errorHandler);
 
-app.listen(PORT, () => {
+app.listen(PORT, async() => {
   console.log(`server is listening on ${PORT}`);
+  await connectToDb()
+
 });

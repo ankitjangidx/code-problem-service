@@ -5,7 +5,7 @@ ProblemRouter.get("/ping", problemController.pingProblem);
 ProblemRouter.get("/:id", problemController.getProblem);
 ProblemRouter.get("/", problemController.getProblems);
 ProblemRouter.post("/", problemController.addProblem);
-ProblemRouter.delete("/:id", problemController.deleteProblems);
-ProblemRouter.put("/:id", problemController.updateProblems);
+ProblemRouter.delete("/:id", problemController.deleteProblem);
+ProblemRouter.put("/:id", problemController.updateProblem);
 
 export default ProblemRouter;

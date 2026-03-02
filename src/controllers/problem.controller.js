@@ -23,9 +23,8 @@ async function addProblem(req, res, next) {
     next(error);
   }
 }
-async function getProblem(req, res) {
+async function getProblem(req, res, next) {
   try {
-    console.log("getProblem",req.param)
     const problem = await problemService.getProblem(req.param.id);
     return res.status(StatusCodes.OK).json({
       success: true,
@@ -37,7 +36,7 @@ async function getProblem(req, res) {
     next(error);
   }
 }
-async function getProblems(req, res) {
+async function getProblems(req, res, next) {
   try {
     const problems = await problemService.getProblems();
     return res.status(StatusCodes.OK).json({
@@ -51,7 +50,7 @@ async function getProblems(req, res) {
   }
 }
 
-async function deleteProblem(req, res) {
+async function deleteProblem(req, res, next) {
   try {
     const deletedProblem = await problemService.deleteProblem(req.params.id);
     return res.status(StatusCodes.OK).json({
@@ -64,11 +63,11 @@ async function deleteProblem(req, res) {
     next(error);
   }
 }
-function updateProblem(req, res) {
+function updateProblem(req, res, next) {
   try {
     throw new NotImplemented("Add Problem");
   } catch (error) {
-    next();
+    next(error);
   }
 }
 

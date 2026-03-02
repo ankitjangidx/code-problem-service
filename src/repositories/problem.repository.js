@@ -22,9 +22,8 @@ export class ProblemRepository {
   }
   async getProblem(id) {
     try {
-      console.log("id", id);
       const problem = await Problem.findById(id);
-      console.log("problem", problem);
+
       if (!problem) {
         throw new NotFound("Problem", id);
       }
